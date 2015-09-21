@@ -38,7 +38,7 @@ class PizzaOrder
     /**
      * @var string
      *
-     * @ORM\Column(name="toppings", type="text")
+     * @ORM\Column(name="toppings", type="simple_array")
      */
     private $toppings;
 
