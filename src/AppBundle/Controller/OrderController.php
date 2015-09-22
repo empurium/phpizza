@@ -15,10 +15,18 @@ class OrderController extends Controller
      */
     public function orderAction(Request $request)
     {
-        return $this->render(
-            'Order/order.html.twig',
-            array('variety' => $request->query->get('variety'))
-        );
+        // GET requests simply show the Place Order page
+        if ($request->getMethod() == 'GET') {
+            return $this->render(
+                'Order/order.html.twig',
+                array('variety' => $request->query->get('variety'))
+            );
+        }
+
+        // POST requests save the Order to the DB
+        elseif ($request->getMethod() == 'POST') {
+            
+        }
     }
 
 }
