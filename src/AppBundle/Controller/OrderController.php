@@ -4,8 +4,11 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Forms;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use AppBundle\Entity\Customer;
+use AppBundle\Entity\Order;
 
 class OrderController extends Controller
 {
@@ -17,15 +20,55 @@ class OrderController extends Controller
     {
         // GET requests simply show the Place Order page
         if ($request->getMethod() == 'GET') {
+            // Prevent XSS and Default to michaels-fav
+            // There is likely a more native way of handling this, such as Symfony Forms
+            switch($request->query->get('variety')) {
+                case 'meatlovers':
+                case 'vegetarian':
+                case 'michaels-fav':
+                    $variety = $request->query->get('variety');
+                break;
+
+                default:
+                    $variety = 'michaels-fav';
+            }
+
             return $this->render(
                 'Order/order.html.twig',
-                array('variety' => $request->query->get('variety'))
+                array('variety' => $variety)
             );
         }
 
         // POST requests save the Order to the DB
         elseif ($request->getMethod() == 'POST') {
-            
+            $customers   = $this->getDoctrine()->getRepository('AppBundle:Customer');
+            $em          = $this->getDoctrine()->getManager();
+
+            // Does this customer already exist?
+            $customer = $customers->findOneBy(array(
+                'lname' => $request->request->get('lname'),
+                'phone' => $request->request->get('phone'),
+            ));
+
+            // If not, create this customer!
+            if (!$customer) {
+                $customer = new Customer();
+                $customer->setFname($request->request->get('fname'));
+                $customer->setLname($request->request->get('lname'));
+                $customer->setPhone($request->request->get('phone'));
+
+                $em->persist($customer);
+                $em->flush();
+            }
+
+            return $this->render(
+                'Order/order.html.twig',
+                array('variety' => 'meatlovers')
+            );
+
+
+            // $order = new Order();
+            // $order->set
         }
     }
 
