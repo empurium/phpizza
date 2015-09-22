@@ -20,6 +20,7 @@
   "dependencies": {
     "backbone": "~1.2.3",
     "bootstrap": "~3.3.5",
+    "bootstrap-validator": "~0.9.0",
     "chosen": "~1.4.2",
     "chosen-bootstrap": "~1.1.0",
     "classie": "~1.0.1",
