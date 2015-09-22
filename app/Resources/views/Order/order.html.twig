@@ -7,8 +7,62 @@
     <div class="row">
         <div class="col-xs-12">
             <h1>Order a Pizza!</h1>
-            Variety: {{ variety }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <img src="/img/pizzas/{{ variety }}.jpg" class="img-responsive img-thumbnail">
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+            <form method="POST" action="/order">
+                <div class="form-group">
+                    <label for="fname">Your Contact Information</label>
+                    <input type="fname" class="form-control" id="fname" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <input type="lname" class="form-control" id="lname" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <input type="phone" class="form-control" id="phone" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="toppings">Select Your Pizza Toppings</label>
+                    <select name="toppings" id="toppings" placeholder="Select your Pizza Toppings" class="chosen-select" multiple>
+                        <option value="cheese-cheddar">Cheddar Cheese</option>
+                        <option value="cheese-feta">Feta Cheese</option>
+                        <option value="cheese-shredded-parmesan-asiago">Shredded Parmesan Asiago</option>
+                        <option value="cheese-shredded-provolone">Shredded Provolone Cheese</option>
+                        <option value="banana-peppers">Banana Peppers</option>
+                        <option value="black-olives">Black Olives</option>
+                        <option value="green-olives">Green Olives</option>
+                        <option value="green-peppers">Green Peppers</option>
+                        <option value="jalapeno-peppers">Jalapeno Peppers</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pineapple">Pineapple</option>
+                        <option value="onions">Onions</option>
+                        <option value="roasted-red-peppers">Roasted Red Peppers</option>
+                        <option value="spinach">Spinach</option>
+                        <option value="diced-tomatoes">Diced Tomatoes</option>
+                        <option value="hot-sauce">Hot Sauce</option>
+                    </select>
+                </div>
+
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-default btn-primary">Send Me Pizza!</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bower/chosen-bootstrap/chosen.bootstrap.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bower/chosen/chosen.jquery.min.js') }}"></script>
+    <script src="{{ asset('js/order.js') }}"></script>
 {% endblock %}
