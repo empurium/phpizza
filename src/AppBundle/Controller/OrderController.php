@@ -53,22 +53,30 @@ class OrderController extends Controller
             // If not, create this customer!
             if (!$customer) {
                 $customer = new Customer();
-                $customer->setFname($request->request->get('fname'));
-                $customer->setLname($request->request->get('lname'));
-                $customer->setPhone($request->request->get('phone'));
+                $customer
+                    ->setFname($request->request->get('fname'))
+                    ->setLname($request->request->get('lname'))
+                    ->setPhone($request->request->get('phone'));
 
                 $em->persist($customer);
                 $em->flush();
             }
 
+            // Save the Order for this Customer
+            $order = new Order();
+            $order
+                ->setCustomerId($customer->getId())
+                ->setPizzaVariety($request->request->get('variety'))
+                ->setToppings($request->request->get('toppings'))
+                ->setStatus('Queued');
+
+            $em->persist($order);
+            $em->flush();
+
             return $this->render(
                 'Order/order.html.twig',
                 array('variety' => 'meatlovers')
             );
-
-
-            // $order = new Order();
-            // $order->set
         }
     }
 
