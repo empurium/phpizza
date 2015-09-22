@@ -1,7 +1,7 @@
 # TODO
 
 * PUT /orders?id=xyz to update the status of an order from a drop-down
-(Queued, Preparing, Cooking, Delivering)
+  * Queued, Preparing, Cooking, Delivering
 
 * Extend FOSRestController to create API's
   * `GET /api/orders`              (list orders)
