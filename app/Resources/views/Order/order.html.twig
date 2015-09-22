@@ -1,7 +1,14 @@
-{% extends "::base.html.twig" %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Order Pizza{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Order:order page</h1>
+<div class="container page-container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Order a Pizza!</h1>
+            Variety: {{ variety }}
+        </div>
+    </div>
+</div>
 {% endblock %}
