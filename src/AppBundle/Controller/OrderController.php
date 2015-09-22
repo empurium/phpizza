@@ -41,8 +41,8 @@ class OrderController extends Controller
 
         // POST requests save the Order to the DB
         elseif ($request->getMethod() == 'POST') {
-            $customers   = $this->getDoctrine()->getRepository('AppBundle:Customer');
             $em          = $this->getDoctrine()->getManager();
+            $customers   = $em->getRepository('AppBundle:Customer');
 
             // Does this customer already exist?
             $customer = $customers->findOneBy(array(
@@ -73,10 +73,7 @@ class OrderController extends Controller
             $em->persist($order);
             $em->flush();
 
-            return $this->render(
-                'Order/order.html.twig',
-                array('variety' => 'meatlovers')
-            );
+            return $this->redirect('/orders');
         }
     }
 
