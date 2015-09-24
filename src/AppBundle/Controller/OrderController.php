@@ -34,7 +34,7 @@ class OrderController extends Controller
             }
 
             return $this->render(
-                'Order/order.html.twig',
+                'AppBundle:Order:order.html.twig',
                 array('variety' => $variety)
             );
         }

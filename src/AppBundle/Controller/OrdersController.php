@@ -24,7 +24,7 @@ class OrdersController extends Controller
                 ->findAll(array(), array('id', 'ASC'));
 
             return $this->render(
-                'Orders/orders.html.twig',
+                'AppBundle:Orders:orders.html.twig',
                 array('orders' => $orders)
             );
         }
