@@ -2,79 +2,94 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Forms;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Customer;
 use AppBundle\Entity\Order;
 
-class OrderController extends Controller
+class OrderController extends FOSRestController
 {
     /**
-     * @Route("/order")
-     * @Template()
+     * Check if the Customer exists based on Last Name/Phone, create if it does not.
+     * Then create an Order for delicious pizza for this $customer->id.
      */
-    public function orderAction(Request $request)
+    public function postOrderAction(Request $request)
     {
-        // GET requests simply show the Place Order page
-        if ($request->getMethod() == 'GET') {
-            // Prevent XSS and Default to michaels-fav
-            // There is likely a more native way of handling this, such as Symfony Forms
-            switch($request->query->get('variety')) {
-                case 'meatlovers':
-                case 'vegetarian':
-                case 'michaels-fav':
-                    $variety = $request->query->get('variety');
-                break;
+        $em          = $this->getDoctrine()->getManager();
+        $customers   = $em->getRepository('AppBundle:Customer');
 
-                default:
-                    $variety = 'michaels-fav';
-            }
+        // Does this customer already exist?
+        $customer = $customers->findOneBy(array(
+            'lname' => $request->request->get('lname'),
+            'phone' => $request->request->get('phone'),
+        ));
 
-            return $this->render(
-                'AppBundle:Order:order.html.twig',
-                array('variety' => $variety)
+        // If not, create this customer!
+        if (!$customer) {
+            $customer = new Customer();
+            $customer
+                ->setFname($request->request->get('fname'))
+                ->setLname($request->request->get('lname'))
+                ->setPhone($request->request->get('phone'));
+
+            $em->persist($customer);
+            $em->flush();
+        }
+
+        // Save the Order for this Customer
+        $order = new Order();
+        $order
+            ->setCustomerId($customer->getId())
+            ->setPizzaVariety($request->request->get('variety'))
+            ->setToppings($request->request->get('toppings'))
+            ->setStatus('Queued');
+
+        $em->persist($order);
+        $em->flush();
+
+        $res = array();
+        if ($order) {
+            $res = array(
+                'status'   => 'success',
+                'message'  => 'Your order has been placed!',
+                'order_id' => $order->getId(),
+            );
+        }
+        else {
+            $res = array(
+                'status'   => 'error',
+                'message'  => 'There was an error placing your order.',
             );
         }
 
-        // POST requests save the Order to the DB
-        elseif ($request->getMethod() == 'POST') {
-            $em          = $this->getDoctrine()->getManager();
-            $customers   = $em->getRepository('AppBundle:Customer');
+        $view = $this->view(json_encode($res), 200);
 
-            // Does this customer already exist?
-            $customer = $customers->findOneBy(array(
-                'lname' => $request->request->get('lname'),
-                'phone' => $request->request->get('phone'),
-            ));
-
-            // If not, create this customer!
-            if (!$customer) {
-                $customer = new Customer();
-                $customer
-                    ->setFname($request->request->get('fname'))
-                    ->setLname($request->request->get('lname'))
-                    ->setPhone($request->request->get('phone'));
-
-                $em->persist($customer);
-                $em->flush();
-            }
-
-            // Save the Order for this Customer
-            $order = new Order();
-            $order
-                ->setCustomerId($customer->getId())
-                ->setPizzaVariety($request->request->get('variety'))
-                ->setToppings($request->request->get('toppings'))
-                ->setStatus('Queued');
-
-            $em->persist($order);
-            $em->flush();
-
-            return $this->redirect('/orders');
-        }
+        return $this->handleView($view);
     }
+
+    // public function orderAction(Request $request)
+    // {
+    //     // GET requests simply show the Place Order page
+    //     if ($request->getMethod() == 'GET') {
+    //         // Prevent XSS and Default to michaels-fav
+    //         // There is likely a more native way of handling this, such as Symfony Forms
+    //         switch($request->query->get('variety')) {
+    //             case 'meatlovers':
+    //             case 'vegetarian':
+    //             case 'michaels-fav':
+    //                 $variety = $request->query->get('variety');
+    //             break;
+
+    //             default:
+    //                 $variety = 'michaels-fav';
+    //         }
+
+    //         return $this->render(
+    //             'AppBundle:Order:order.html.twig',
+    //             array('variety' => $variety)
+    //         );
+    //     }
+    // }
 
 }
