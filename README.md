@@ -10,12 +10,12 @@ A Symfony project created on September 19, 2015, 7:27 pm.
 
 * `cd phpizza/`
 
-* `composer update`
+* `composer install`
 
 
 ## Set up the database
 
-* Configure connection information in your `app/config/parameters.yml` (or during `composer update`)
+* Configure connection information in your `app/config/parameters.yml` (or during `composer install`)
 
 * You may have to grant privileges to your SQL user:
 `GRANT all privileges on phpizza.* to phpizza@localhost;`
