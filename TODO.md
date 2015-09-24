@@ -2,7 +2,8 @@
 
 ~~* Fix incorrect twig template locations that I pointed out to Thai~~
 
-~~* Read about Symfony Bundles~~
+~~* Read about Symfony Bundles - bundle inheritance is rad!~~
+
 
 
 
@@ -12,16 +13,19 @@
   * `PATCH /api/orders?id=xyz`      (update order status)
     * Queued, Preparing, Cooking, Delivering
 
-* Integrate Backbone.js and Marionette to create an SPA that uses the API's
+* Use Symfony Forms to server-side validation
 
 * Unit test for `POST /api/order`
 
 * Unit test for `GET /api/orders`, `PATCH /api/orders?id=xyz`
 
-* Use Symfony Forms to server-side validation
+* Integrate Backbone.js and Marionette to create an SPA that uses the API's
+
 
 
 ### Extras
+
+* Read about relationships in `Doctrine`
 
 * Read about `Guzzle`
 
