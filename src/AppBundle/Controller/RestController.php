@@ -25,7 +25,9 @@ class RestController extends FOSRestController
      */
     public function postRestAction(Request $request)
     {
-        
+        $view = $this->view(array('status' => 'posted'), 200);
+
+        return $this->handleView($view);
     }
 
     /**
@@ -33,7 +35,9 @@ class RestController extends FOSRestController
      */
     public function patchRestAction(Request $request)
     {
-        
+        $view = $this->view(array('status' => 'patched'), 200);
+
+        return $this->handleView($view);
     }
 
 }
