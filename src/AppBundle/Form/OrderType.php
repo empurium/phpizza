@@ -14,13 +14,13 @@ class OrderType extends AbstractType
             ->add('customer_id', 'integer', array(
                 'description' => 'Customer ID for this pizza Order.',
             ))
-            ->add('pizza_variety', 'string', array(
+            ->add('pizza_variety', 'text', array(
                 'description' => 'Pizza Variety to base the additional toppings upon.',
             ))
             ->add('toppings', 'array', array(
                 'description' => 'Toppings that will go on top of the pizza.',
             ))
-            ->add('status', 'string', array(
+            ->add('status', 'text', array(
                 'description' => 'Status of the pizza Order.',
             ));
     }
