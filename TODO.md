@@ -12,9 +12,14 @@
 
 * Unit test for `GET /api/orders`, `PATCH /api/orders?id=xyz`
 
+* Use Symfony Forms to server-side validation
 
 
 ### Extras
+
+* Read about `Guzzle`
+
+* Read about `Symfony Events`
 
 * Topping management UI
   * `GET  /api/toppings`                (list)
