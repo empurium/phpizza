@@ -1,5 +1,11 @@
 # TODO
 
+~~* Fix incorrect twig template locations that I pointed out to Thai~~
+
+~~* Read about Symfony Bundles~~
+
+
+
 * Extend FOSRestController to create API's
   * `POST  /api/order`              (place order)
   * `GET   /api/orders`             (list orders)
