@@ -2,6 +2,10 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-orders:
+rest:
     type: rest
     resource: AppBundle\Controller\RestController
+
+orders:
+    type: rest
+    resource: AppBundle\Controller\OrderController
