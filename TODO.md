@@ -21,9 +21,12 @@
 
 
 ### Customer API's
+
 * `GET  /api/customers`            (list)
 * `POST /api/customers`            (create a customer)
 
+
+### Next steps / Weekend fun
 
 * Integrate Backbone.js and Marionette to create an SPA that uses the API's
 
