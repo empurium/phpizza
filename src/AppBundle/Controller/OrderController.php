@@ -105,7 +105,7 @@ class OrderController extends FOSRestController
 
     /**
      * Update the given Order ID's status. Expects ?status=xyz
-     * Statuses can be: Queued, Preparing, Cooking, Delivering
+     * Statuses can be: Queued, Preparing, Cooking, Delivering, Delivered
      *
      * @param Request $request  the request object
      * @param int     $id       Order ID
