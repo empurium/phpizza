@@ -110,7 +110,7 @@ class OrderController extends FOSRestController
      * @param Request $request  the request object
      * @param int     $id       Order ID
      *
-     * @return array Contains status, message
+     * @return array Contains status, message, and updated order[]
      */
     public function patchOrderAction(Request $request, $id)
     {
@@ -126,9 +126,9 @@ class OrderController extends FOSRestController
         // Return the Order ID if it was properly created
         if ($order) {
             $view = $this->view(array(
-                'status'   => 'success',
-                'message'  => 'Order status has been updated.',
-                'order_id' => $order->getId(),
+                'status'  => 'success',
+                'message' => 'Order status has been updated.',
+                'order'   => $order,
             ), 200);
         }
         else {
