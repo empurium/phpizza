@@ -73,15 +73,15 @@ class OrderController extends FOSRestController
                 'message'  => 'Your order has been placed!',
                 'order_id' => $order->getId(),
             );
+            $view = $this->view($res, 200);
         }
         else {
             $res = array(
                 'status'   => 'error',
                 'message'  => 'There was an error placing your order.',
             );
+            $view = $this->view($res, 500);
         }
-
-        $view = $this->view($res, 200);
 
         return $this->handleView($view);
     }
