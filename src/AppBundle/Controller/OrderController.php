@@ -23,6 +23,7 @@ class OrderController extends FOSRestController
         $orders = $em->getRepository('AppBundle:Order')
             ->findAll(array(), array('id', 'ASC'));
 
+        // Return the Orders if any were found
         if ($orders) {
             $view = $this->view(array(
                 'status'  => 'success',
@@ -82,21 +83,19 @@ class OrderController extends FOSRestController
         $em->persist($order);
         $em->flush();
 
-        $res = array();
+        // Return the Order ID if it was properly created
         if ($order) {
-            $res = array(
+            $view = $this->view(array(
                 'status'   => 'success',
                 'message'  => 'Your order has been placed!',
                 'order_id' => $order->getId(),
-            );
-            $view = $this->view($res, 200);
+            ), 200);
         }
         else {
-            $res = array(
+            $view = $this->view(array(
                 'status'   => 'error',
                 'message'  => 'There was an error placing your order.',
-            );
-            $view = $this->view($res, 500);
+            ), 500);
         }
 
         return $this->handleView($view);
