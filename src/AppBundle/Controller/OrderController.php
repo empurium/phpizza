@@ -11,6 +11,24 @@ use AppBundle\Entity\Order;
 class OrderController extends FOSRestController
 {
     /**
+     * Get the existing Orders, sorted by id ASC.
+     */
+    public function getOrdersAction(Request $request)
+    {
+        $em     = $this->getDoctrine()->getManager();
+        $orders = $em->getRepository('AppBundle:Order')
+            ->findAll(array(), array('id', 'ASC'));
+
+        $view = $this->view(array(
+            'status'  => 'success',
+            'message' => 'Pizza Orders sorted by ID ASC',
+            'orders'  => json_encode($orders, null, 5),
+        ), 200);
+
+        return $this->handleView($view);
+    }
+
+    /**
      * Check if the Customer exists based on Last Name/Phone, create if it does not.
      * Then create an Order for delicious pizza for this $customer->id.
      */
@@ -67,29 +85,4 @@ class OrderController extends FOSRestController
 
         return $this->handleView($view);
     }
-
-    // public function orderAction(Request $request)
-    // {
-    //     // GET requests simply show the Place Order page
-    //     if ($request->getMethod() == 'GET') {
-    //         // Prevent XSS and Default to michaels-fav
-    //         // There is likely a more native way of handling this, such as Symfony Forms
-    //         switch($request->query->get('variety')) {
-    //             case 'meatlovers':
-    //             case 'vegetarian':
-    //             case 'michaels-fav':
-    //                 $variety = $request->query->get('variety');
-    //             break;
-
-    //             default:
-    //                 $variety = 'michaels-fav';
-    //         }
-
-    //         return $this->render(
-    //             'AppBundle:Order:order.html.twig',
-    //             array('variety' => $variety)
-    //         );
-    //     }
-    // }
-
 }
