@@ -41,6 +41,7 @@ class OrderController extends FOSRestController
         return $this->handleView($view);
     }
 
+
     /**
      * Check if the Customer exists based on Last Name/Phone, create if it does not.
      * Then create an Order for delicious pizza for this $customer->id.
@@ -95,6 +96,45 @@ class OrderController extends FOSRestController
             $view = $this->view(array(
                 'status'   => 'error',
                 'message'  => 'There was an error placing your order.',
+            ), 500);
+        }
+
+        return $this->handleView($view);
+    }
+
+
+    /**
+     * Update the given Order ID's status. Expects ?status=xyz
+     * Statuses can be: Queued, Preparing, Cooking, Delivering
+     *
+     * @param Request $request  the request object
+     * @param int     $id       Order ID
+     *
+     * @return array Contains status, message
+     */
+    public function patchOrderAction(Request $request, $id)
+    {
+        $status = $request->query->get('status');
+        $em     = $this->getDoctrine()->getManager();
+        $order  = $em->getRepository('AppBundle:Order')->find($id);
+
+        // Save the new Order status
+        $order->setStatus($status);
+        $em->persist($order);
+        $em->flush();
+
+        // Return the Order ID if it was properly created
+        if ($order) {
+            $view = $this->view(array(
+                'status'   => 'success',
+                'message'  => 'Order status has been updated.',
+                'order_id' => $order->getId(),
+            ), 200);
+        }
+        else {
+            $view = $this->view(array(
+                'status'   => 'error',
+                'message'  => 'There was an error updating the status of this order.',
             ), 500);
         }
 
