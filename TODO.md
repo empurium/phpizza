@@ -13,6 +13,8 @@
   * `PATCH /api/orders?id=xyz`      (update order status)
     * Queued, Preparing, Cooking, Delivering
 
+* Create Doctrine relationship for Customer ID in GET /orders
+
 * Use Symfony Forms to server-side validation
 
 * Unit test for `POST /api/order`
