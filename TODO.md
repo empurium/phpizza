@@ -15,7 +15,7 @@
 
 ~~* Unit test for `POST /api/order`~~
 
-~~* Unit test for `GET /api/orders`
+~~* Unit test for `GET /api/orders`~~
 
 ~~* Unit test for `PATCH /api/orders/xyz?status=Cooking`~~
 
@@ -30,7 +30,7 @@
 
 ~~* Unit test for `POST /api/toppings`~~
 
-~~* Unit test for `GET /api/toppings`
+~~* Unit test for `GET /api/toppings`~~
 
 ~~* Unit test for `DELETE /api/toppings/xyz`~~
 
