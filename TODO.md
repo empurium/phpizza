@@ -4,32 +4,29 @@
 
 ~~* Read about Symfony Bundles - bundle inheritance is rad!~~
 
+~~* Extend FOSRestController to create API's~~
+  ~~* Create `POST  /api/order`              (place order)~~
+  ~~* Create `GET   /api/orders`             (list orders)~~
+  ~~* Create `PATCH /api/orders/xyz`         (update order status)~~
+      ~~* Queued, Preparing, Cooking, Delivering, Delivered~~
 
+~~* Unit test for `POST /api/order`~~
 
+~~* Unit test for `GET /api/orders`
 
-* Extend FOSRestController to create API's
-  * `POST  /api/order`              (place order)
-  * `GET   /api/orders`             (list orders)
-  * `PATCH /api/orders?id=xyz`      (update order status)
-    * Queued, Preparing, Cooking, Delivering
+~~* Unit test for `PATCH /api/orders/xyz?status=Cooking`~~
 
-* Create Doctrine relationship for Customer ID in GET /orders
+* Integrate Backbone.js and Marionette to create an SPA that uses the API's
 
 * Use Symfony Forms to server-side validation
 
-* Unit test for `POST /api/order`
-
-* Unit test for `GET /api/orders`, `PATCH /api/orders?id=xyz`
-
-* Integrate Backbone.js and Marionette to create an SPA that uses the API's
+* Create Doctrine relationship for Customer ID in GET /orders
 
 
 
 ### Extras
 
 * Use Doctrine Fixtures in unit tests
-
-* Read about relationships in `Doctrine`
 
 * Read about `Guzzle`
 
