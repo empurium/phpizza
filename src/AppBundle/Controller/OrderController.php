@@ -23,11 +23,19 @@ class OrderController extends FOSRestController
         $orders = $em->getRepository('AppBundle:Order')
             ->findAll(array(), array('id', 'ASC'));
 
-        $view = $this->view(array(
-            'status'  => 'success',
-            'message' => 'Pizza Orders sorted by ID ASC',
-            'orders'  => $orders,
-        ), 200);
+        if ($orders) {
+            $view = $this->view(array(
+                'status'  => 'success',
+                'message' => 'Pizza Orders sorted by ID ASC',
+                'orders'  => $orders,
+            ), 200);
+        }
+        else {
+            $view = $this->view(array(
+                'status'  => 'error',
+                'message' => 'Did not find any Orders.',
+            ), 500);
+        }
 
         return $this->handleView($view);
     }
