@@ -7,6 +7,11 @@ orders:
     prefix: /api
     resource: AppBundle\Controller\OrderController
 
+toppings:
+    type: rest
+    prefix: /api
+    resource: AppBundle\Controller\ToppingController
+
 rest:
     type: rest
     prefix: /api
