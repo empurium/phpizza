@@ -5,22 +5,26 @@
 ~~* Read about Symfony Bundles - bundle inheritance is rad!~~
 
 ~~* Extend FOSRestController to create API's~~
-  ~~* Create `POST  /api/orders`             (place order)~~
-  ~~* Create `GET   /api/orders`             (list orders)~~
-  ~~* Create `PATCH /api/orders/xyz`         (update order status)~~
+~~  * Create `POST  /api/orders`             (place order)~~
+~~  * Create `GET   /api/orders`             (list orders)~~
+~~  * Create `PATCH /api/orders/xyz`         (update order status)~~
       ~~* Queued, Preparing, Cooking, Delivering, Delivered~~
 
 ~~* Unit test for `POST /api/order`~~
+
 ~~* Unit test for `GET /api/orders`
+
 ~~* Unit test for `PATCH /api/orders/xyz?status=Cooking`~~
 
 ~~* Topping management API's~~
-  ~~* `GET  /api/toppings`                (list)~~
-  ~~* `POST /api/toppings`                (add topping)~~
-  ~~* `DEL  /api/toppings/xyz`            (delete topping)~~
+~~  * `GET  /api/toppings`                (list)~~
+~~  * `POST /api/toppings`                (add topping)~~
+~~  * `DEL  /api/toppings/xyz`            (delete topping)~~
 
 ~~* Unit test for `POST /api/toppings`~~
+
 ~~* Unit test for `GET /api/toppings`
+
 ~~* Unit test for `DELETE /api/toppings/xyz`~~
 
 * Customer API's
