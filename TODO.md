@@ -27,6 +27,8 @@
 
 ### Extras
 
+* Use Doctrine Fixtures in unit tests
+
 * Read about relationships in `Doctrine`
 
 * Read about `Guzzle`
