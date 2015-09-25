@@ -22,7 +22,7 @@ class OrderController extends FOSRestController
         $view = $this->view(array(
             'status'  => 'success',
             'message' => 'Pizza Orders sorted by ID ASC',
-            'orders'  => json_encode($orders, null, 5),
+            'orders'  => $orders,
         ), 200);
 
         return $this->handleView($view);
@@ -81,7 +81,7 @@ class OrderController extends FOSRestController
             );
         }
 
-        $view = $this->view(json_encode($res), 200);
+        $view = $this->view($res, 200);
 
         return $this->handleView($view);
     }
