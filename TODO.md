@@ -16,6 +16,15 @@
 
 ~~* Unit test for `PATCH /api/orders/xyz?status=Cooking`~~
 
+* Topping management API's
+  * `GET  /api/toppings`                (list)
+  * `POST /api/toppings`                (add topping)
+  * `DEL  /api/toppings/xyz`            (delete topping)
+
+* Customer API's
+  * `GET  /api/customers`            (list)
+  * `POST /api/customers`            (create a customer)
+
 * Integrate Backbone.js and Marionette to create an SPA that uses the API's
 
 * Use Symfony Forms to server-side validation
@@ -31,15 +40,6 @@
 * Read about `Guzzle`
 
 * Read about `Symfony Events`
-
-* Topping management UI
-  * `GET  /api/toppings`                (list)
-  * `POST /api/toppings`                (add topping)
-  * `DEL  /api/toppings?id=xyz`         (delete topping)
-
-* Customer API's
-  * `GET  /api/customers`            (list)
-  * `POST /api/customers`            (create a customer)
 
 * Charge $1 per ingredient, show total price
 
