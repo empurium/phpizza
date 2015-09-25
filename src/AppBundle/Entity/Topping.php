@@ -24,6 +24,14 @@ class Topping
     /**
      * @var string
      *
+     * @ORM\Column(name="topping_key", type="string", length=255)
+     */
+    private $toppingKey;
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="topping", type="string", length=255)
      */
     private $topping;
@@ -37,6 +45,30 @@ class Topping
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set toppingKey
+     *
+     * @param string $toppingKey
+     *
+     * @return ToppingKey
+     */
+    public function setToppingKey($toppingKey)
+    {
+        $this->toppingKey = $toppingKey;
+
+        return $this;
+    }
+
+    /**
+     * Get toppingKey
+     *
+     * @return string
+     */
+    public function getToppingKey()
+    {
+        return $this->toppingKey;
     }
 
     /**
