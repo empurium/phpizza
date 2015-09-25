@@ -10,7 +10,7 @@ class RestControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler  = $client->request('GET', '/rest.json');
+        $crawler  = $client->request('GET', '/api/rest.json');
         $response = $client->getResponse();
 
         // ensure 200 status code from request
@@ -24,7 +24,7 @@ class RestControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler  = $client->request('POST', '/rests.json');
+        $crawler  = $client->request('POST', '/api/rests.json');
         $response = $client->getResponse();
 
         // ensure 200 status code from request
@@ -38,7 +38,7 @@ class RestControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler  = $client->request('PATCH', '/rest.json');
+        $crawler  = $client->request('PATCH', '/api/rest.json');
         $response = $client->getResponse();
 
         // ensure 200 status code from request

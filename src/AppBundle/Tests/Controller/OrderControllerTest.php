@@ -10,7 +10,7 @@ class OrderControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler  = $client->request('POST', '/orders.json', array(
+        $crawler  = $client->request('POST', '/api/orders.json', array(
             'fname'    => 'Test First',
             'lname'    => 'Test Last',
             'phone'    => '555-555-1234',
@@ -32,7 +32,7 @@ class OrderControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler  = $client->request('GET', '/orders.json');
+        $crawler  = $client->request('GET', '/api/orders.json');
         $response = $client->getResponse();
         $orders   = json_decode($response->getContent());
 
