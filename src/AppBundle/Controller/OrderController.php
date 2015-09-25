@@ -12,6 +12,10 @@ class OrderController extends FOSRestController
 {
     /**
      * Get the existing Orders, sorted by id ASC.
+     *
+     * @param Request $request  the request object
+     *
+     * @return array Contains status, message, and orders[] list of Orders.
      */
     public function getOrdersAction(Request $request)
     {
@@ -31,6 +35,10 @@ class OrderController extends FOSRestController
     /**
      * Check if the Customer exists based on Last Name/Phone, create if it does not.
      * Then create an Order for delicious pizza for this $customer->id.
+     *
+     * @param Request $request  the request object
+     *
+     * @return array Contains status, message, and order_id of created Order.
      */
     public function postOrderAction(Request $request)
     {
