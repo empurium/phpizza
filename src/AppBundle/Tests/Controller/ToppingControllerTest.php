@@ -30,7 +30,7 @@ class ToppingControllerTest extends WebTestCase
         self::$topping_id = $resData->topping->id;
     }
 
-    public function testGetOrder()
+    public function testGetTopping()
     {
         $client = static::createClient();
 
@@ -45,7 +45,7 @@ class ToppingControllerTest extends WebTestCase
         $this->assertGreaterThan(0, count($resData->toppings));
     }
 
-    public function testDeleteOrder()
+    public function testDeleteTopping()
     {
         $client = static::createClient();
 
