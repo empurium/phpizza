@@ -5,8 +5,8 @@
 * ~~Create `POST  /api/orders`             (place order)~~
 * ~~Create `GET   /api/orders`             (list orders)~~
 * ~~Create `PATCH /api/orders/xyz`         (update order status)~~
-* ~~Unit test for `POST /api/order`~~
 * ~~Unit test for `GET /api/orders`~~
+* ~~Unit test for `POST /api/order`~~
 * ~~Unit test for `PATCH /api/orders/xyz?status=Cooking`~~
 
 
@@ -15,15 +15,17 @@
 * ~~`GET  /api/toppings`                (list)~~
 * ~~`POST /api/toppings`                (add topping)~~
 * ~~`DEL  /api/toppings/xyz`            (delete topping)~~
-* ~~Unit test for `POST /api/toppings`~~
 * ~~Unit test for `GET /api/toppings`~~
+* ~~Unit test for `POST /api/toppings`~~
 * ~~Unit test for `DELETE /api/toppings/xyz`~~
 
 
 ### Customer API's
 
-* `GET  /api/customers`            (list)
-* `POST /api/customers`            (create a customer)
+* ~~`GET  /api/customers`            (list)~~
+* ~~`POST /api/customers`            (create a customer)~~
+* ~~Unit test for `GET /api/customers`~~
+* ~~Unit test for `POST /api/customers`~~
 
 
 ### Next steps / Weekend fun
