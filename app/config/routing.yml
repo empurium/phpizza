@@ -2,6 +2,11 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+customers:
+    type: rest
+    prefix: /api
+    resource: AppBundle\Controller\CustomerController
+
 orders:
     type: rest
     prefix: /api
